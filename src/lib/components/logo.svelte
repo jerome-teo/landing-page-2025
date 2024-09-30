@@ -6,8 +6,12 @@
 <div id="logo-parent" class="w-full flex flex-col md:flex-row">
 	<div id="image" class="flex grow-[1] items-center justify-center flex-col">
 		<span class="ucla">@UCLA</span>
-		<img src={Deadjim} alt="QWERHACKS Logo" class="w-[120%] max-w-[120%] md:max-w-full md:w-11/12 h-full"/>
-		<span class="date">JAN 27-29, 2024</span>
+		<img
+			src={Deadjim}
+			alt="QWERHACKS Logo"
+			class="w-[120%] max-w-[120%] md:max-w-full md:w-11/12 h-full"
+		/>
+		<span class="date">FEB 7-9, 2025</span>
 	</div>
 </div>
 
@@ -15,7 +19,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
 	.name {
 		display: grid;
-		grid-template-areas: "zero";
+		grid-template-areas: 'zero';
 		min-height: 0;
 		grid-template-columns: 1fr;
 		grid-template-columns: 1fr;

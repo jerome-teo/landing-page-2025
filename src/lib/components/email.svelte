@@ -4,42 +4,80 @@
 
 	let text: string = '';
 
+	let isChecked: boolean = false;
+
 	let error: string | undefined = undefined;
 
 	let success: boolean = false;
 
 	let loading: boolean = false;
 
+	// +
+	// 				new URLSearchParams({
+	// 					email: text + 'abcupsertOneStatus'
+	// 					// endpoint: 'upsertOneStatus' // Add this line to specify the endp
+	// 				})
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
-		
+		const data = {
+			email: text,
+			needsTravelStipend: isChecked, // Example boolean
+			endpoint: 'upsertOneStatus'
+		};
 		try {
+			// console.log(data);
 			const resp = await fetch(
-				'/api/email?' +
-					new URLSearchParams({
-						email: text,
-					}),
+				'https://script.google.com/macros/s/AKfycby7GQNgpbV6-2hf8K33QdrsCdyiIIqYo25dH_fPorpH1e4JLILw6S5JceYaygqnKbqK/exec?',
 				{
-					method: 'POST'
+					method: 'POST',
+					body: JSON.stringify(data),
+					mode: 'cors',
+					credentials: 'include', // include, *same-origin, omit
+					redirect: 'follow',
+					headers: {
+						'Content-Type': 'text/plain;charset=utf-8'
+					}
 				}
 			);
 
+			// const resp = await fetch(
+			// 	'https://script.google.com/macros/s/AKfycbxic5DHupAnicOLZxuWe0rJQ5IEq_Osid37nFiwja3GcwTfcXyOurI57rorVrKB5o2U/exec',
+			// 	{
+			// 		method: 'POST',
+			// 		body: JSON.stringify({ email: text, endpoint: 'upsertOneStatus' }),
+			// 		mode: 'cors',
+			// 		credentials: 'include', // include, *same-origin, omit
+			// 		redirect: 'follow',
+			// 		headers: {
+			// 			'Content-Type': 'text/plain;charset=utf-8'
+			// 		}
+			// 	}
+			// );
+
+			console.log(JSON.stringify(resp));
+			console.log('Check');
 			if (resp.ok) {
+				console.log('SuccA');
+				console.log(resp);
 				success = true;
 				loading = false;
 			} else {
+				console.log('ErrorB');
 				error = await resp.text();
 				success = false;
 				loading = false;
 			}
 		} catch (err) {
+			// console.log('error33');
 			let message = 'Unknown Error';
 			if (err instanceof Error) message = err.message;
 			error = message;
 			success = false;
 			loading = false;
 		}
+		console.log('error3');
+		// console.log(JSON.stringify(resp));
 		console.error(error);
 	}
 </script>
@@ -49,19 +87,31 @@
 	on:submit|preventDefault={submitHandler}
 >
 	{#if error === undefined && !success}
-		<input
-			bind:value={text}
-			type="email"
-			placeholder="Enter your email for updates"
-			class="w-full px-5 py-2 leading-tight text-gray-900 bg-white appearance-none font-reactor7 lg:text-2xl xl:text-4xl focus:shadow-outline"
-			style="border-radius:50px"
-		/>
+		<div>
+			<div>
+				<input
+					bind:value={text}
+					type="email"
+					placeholder="Enter your email for updates"
+					class="w-full px-5 py-2 leading-tight text-gray-900 border border-gray-500 appearance-none font-reactor7 lg:text-2xl xl:text-4xl focus:shadow-outline"
+					style="border-radius:50px"
+				/>
+			</div>
+			<div class="w-full mt-4">
+				<label class="flex items-center">
+					<input type="checkbox" bind:checked={isChecked} class="mr-2" />
+					<span class="text-gray-900 font-reactor7 lg:text-2xl xl:text-4xl"
+						>I would like a stipend !</span
+					>
+				</label>
+			</div>
+		</div>
 		{#if !loading}
 			<button
 				type="submit"
 				id="submit"
 				class="px-3 py-3 w-[40px] h-[40px] sm:w-[50px] sm:h-[50px]"
-				style="border-radius:100%;aspect-ratio:1/1;background:#05034a"
+				style="border-radius:100%;aspect-ratio:1/1;background:#ede8d0"
 			>
 				<img src={Arrow} />
 			</button>
@@ -100,6 +150,7 @@
 	}
 	input,
 	button {
-		outline: solid 8px #05034a;
+		background-color: #ede8d0;
+		outline: solid 1px grey;
 	}
 </style>
