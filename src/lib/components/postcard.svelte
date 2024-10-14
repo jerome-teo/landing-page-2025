@@ -3,8 +3,9 @@
 	import { onMount } from 'svelte';
 	import Alaska from '$lib/media/Alaska.svg';
 	import QWER from '$lib/media/qwerhacks_LA.svg';
+	import PostcardFront from '$lib/media/postcard_front.svg';
 	import Email from './email.svelte';
-	import Back from '$lib/media/postcard_back.svg';
+	import Back from '$lib/media/postcard back.svg';
 	let isFlipped = false;
 	let isLoaded = false;
 	// Function to toggle the flip state
@@ -105,7 +106,7 @@
 <div class="container" on:click={toggleFlip}>
 	<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
 		<div class="front">
-			<img src={QWER} alt="postcard front" />
+			<img src={PostcardFront} alt="postcard front" />
 		</div>
 		<div class="back">
 			<img src={Back} alt="postcard back" />
@@ -120,21 +121,21 @@
 								bind:value={text}
 								type="email"
 								placeholder="Enter your email for updates"
-								class="w-full px-5 py-2 leading-tight text-gray-900 border border-gray-500 appearance-none font-reactor7 lg:text-1.5xl xl:text-4xl focus:shadow-outline"
+								class="w-full px-5 py-2 leading-tight text-gray-900 border border-gray-500 appearance-none font-serif lg:text-1.5xl xl:text-4xl focus:shadow-outline"
 							/>
 						</div>
 						<div class="w-full mt-4 flex-grow">
 							<label class="flex items-center space-x-2">
 								<input type="checkbox" bind:checked={isChecked} class="mr-2" />
-								<span class="text-gray-900 font-reactor7 flex-grow lg:text-1.5xl xl:text-4xl ml-3">
-									I would like a stipend !</span
+								<span class="text-gray-900 font-serif flex-grow lg:text-1.5xl xl:text-4xl ml-3">
+									I would like a stipend UCLA!</span
 								>
 
 								{#if !loading}
 									<button
 										type="submit"
 										id="submit"
-										class="text-gray-900 font-reactor7 lg:text-1.5xl xl:text-4xl focus:shadow-outline ml-8"
+										class="text-gray-900 font-serif lg:text-1.5xl xl:text-4xl focus:shadow-outline ml-8"
 										style="background:#fbf8f2; width: 70px; height: 17px; display: flex; margin-left: 78px; align-items: center; justify-content: center;"
 									>
 										<!-- <img src={Arrow} /> -->
@@ -192,8 +193,8 @@
 	}
 
 	.container {
-		width: 350px;
-		height: 500px;
+		width: 500px;
+		height: 354px;
 		perspective: 800px;
 	}
 
@@ -237,7 +238,7 @@
 	.back {
 		height: 100%;
 		width: 100%;
-		border-radius: 2rem;
+		border-radius: 1rem;
 		box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
 		position: absolute;
 		backface-visibility: hidden;
@@ -262,9 +263,10 @@
 		flex-direction: column;
 	}
 	@import url(https://db.onlinewebfonts.com/c/3101d0058e2d7317cd5a5af7a1216ff3?family=Reactor7);
+	@import url(https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap);
 	input::placeholder {
 		text-align: center;
-		font-family: 'Reactor7', monospace;
+		font-family: 'Spectral', serif;
 	}
 	input,
 	button {

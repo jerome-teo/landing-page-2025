@@ -1,17 +1,14 @@
 <script lang="ts">
-	import Deadjim from '../media/deadjim.svg';
+	import Logo from '../media/logo.svg';
 </script>
 
 <!-- <div id="logo-parent" class="w-full grid grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-5"> -->
-<div id="logo-parent" class="w-full flex flex-col md:flex-row">
-	<div id="image" class="flex grow-[1] items-center justify-center flex-col">
-		<span class="ucla">@UCLA</span>
-		<img
-			src={Deadjim}
-			alt="QWERHACKS Logo"
-			class="w-[120%] max-w-[120%] md:max-w-full md:w-11/12 h-full"
-		/>
-		<span class="date">FEB 7-9, 2025</span>
+<div id="logo-parent" class="w-full top-1/4 scale-50">
+	<!-- Added top padding here -->
+	<div id="image" class="w-full items-start justify-start pl-4">
+		<!-- Added left padding here -->
+		<!-- Logo image -->
+		<img src={Logo} alt="QWERHACKS Logo" class="w-[100%] max-w-none md:w-[70%] h-auto" />
 	</div>
 </div>
 
