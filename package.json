@@ -12,6 +12,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@smui/textfield": "^7.0.0",
 		"@sveltejs/adapter-vercel": "1.0.0-next.67",
 		"@sveltejs/kit": "1.0.0-next.429",
 		"@types/google-spreadsheet": "^3.3.0",

@@ -19,7 +19,7 @@
 		<img src={MiddleClouds} alt="clouds" class="cloud cloudB group1 w-11/12" />
 		<img src={MiddleClouds} alt="clouds" class="cloud cloudB group2 w-11/12" />
 		<img src={BackClouds} alt="clouds" class="cloud cloudC group1 w-full" />
-		<img src={BackClouds} alt="clouds" class="cloud cloudC  group2 w-full" />
+		<img src={BackClouds} alt="clouds" class="cloud cloudC group2 w-full" />
 	</div>
 	<div>
 		<img
