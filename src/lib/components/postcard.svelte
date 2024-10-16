@@ -5,7 +5,6 @@
 	import Alaska from '$lib/media/Alaska.svg';
 	import QWER from '$lib/media/qwerhacks_LA.svg';
 	import PostcardFront from '$lib/media/postcard_front.svg';
-	import Email from './email.svelte';
 	import Back from '$lib/media/postcard back.svg';
 	let isFlipped = false;
 	let isLoaded = false;
@@ -37,57 +36,39 @@
 
 	let loading: boolean = false;
 
-	// +
-	// 				new URLSearchParams({
-	// 					email: text + 'abcupsertOneStatus'
-	// 					// endpoint: 'upsertOneStatus' // Add this line to specify the endp
-	// 				})
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
-		const data = {
-			name: name_participant,
-			college: school,
-			email: text,
-			needsTravelStipend: isChecked, // Example boolean
-			endpoint: 'upsertOneStatus'
-		};
-		// https://script.google.com/macros/s/AKfycbwSZuo3-sWQLk-t2GXUt13A8qm36ZFhaRk48fn-ZYS4ylTXI2c-34gasxa17P_PGXgP/exec?
+		
 		try {
-			// console.log(data);
 			const resp = await fetch('/api/email', {
 				method: 'POST',
-				body: JSON.stringify(data),
-				mode: 'cors',
-				credentials: 'include', // include, *same-origin, omit
-				redirect: 'follow',
+				body: JSON.stringify({
+					name: name_participant,
+					college: school,
+					userId: text,
+					needsTravelStipend: isChecked,
+				}),
 				headers: {
-					'Content-Type': 'text/plain;charset=utf-8'
+					'content-type': 'application/json'
 				}
 			});
-			console.log(JSON.stringify(resp));
-			console.log('Check');
+
 			if (resp.ok) {
-				console.log('SuccA');
-				console.log(resp);
 				success = true;
 				loading = false;
 			} else {
-				console.log('ErrorB');
 				error = await resp.text();
 				success = false;
 				loading = false;
 			}
 		} catch (err) {
-			// console.log('error33');
 			let message = 'Unknown Error';
 			if (err instanceof Error) message = err.message;
 			error = message;
 			success = false;
 			loading = false;
 		}
-		console.log('error3');
-		// console.log(JSON.stringify(resp));
 		console.error(error);
 	}
 </script>
@@ -248,6 +229,8 @@
 </div>
 
 <style>
+	@import url(https://db.onlinewebfonts.com/c/3101d0058e2d7317cd5a5af7a1216ff3?family=Reactor7);
+	@import url(https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap);
 	* {
 		margin: 0;
 		padding: 0;
@@ -340,8 +323,6 @@
 		height: 25%;
 		width: 50%;
 	}
-	@import url(https://db.onlinewebfonts.com/c/3101d0058e2d7317cd5a5af7a1216ff3?family=Reactor7);
-	@import url(https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap);
 	input::placeholder,
 	.spectral {
 		text-align: left;
