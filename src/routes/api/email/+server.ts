@@ -25,7 +25,7 @@ export async function POST({request}: RequestEvent): Promise<Response> {
     const body = await response.json();
     console.log("Response: ", body);
     if (response.ok) return json("ok");
-    throw error(response.status, response.body);
+    throw error(response.status, body);
   } catch (err) {
     throw error(500, "Internal server error");
   }
