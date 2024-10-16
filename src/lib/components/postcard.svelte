@@ -52,21 +52,19 @@
 			needsTravelStipend: isChecked, // Example boolean
 			endpoint: 'upsertOneStatus'
 		};
+		// https://script.google.com/macros/s/AKfycbwSZuo3-sWQLk-t2GXUt13A8qm36ZFhaRk48fn-ZYS4ylTXI2c-34gasxa17P_PGXgP/exec?
 		try {
 			// console.log(data);
-			const resp = await fetch(
-				'https://script.google.com/macros/s/AKfycbwSZuo3-sWQLk-t2GXUt13A8qm36ZFhaRk48fn-ZYS4ylTXI2c-34gasxa17P_PGXgP/exec?',
-				{
-					method: 'POST',
-					body: JSON.stringify(data),
-					mode: 'cors',
-					credentials: 'include', // include, *same-origin, omit
-					redirect: 'follow',
-					headers: {
-						'Content-Type': 'text/plain;charset=utf-8'
-					}
+			const resp = await fetch('/api/email', {
+				method: 'POST',
+				body: JSON.stringify(data),
+				mode: 'cors',
+				credentials: 'include', // include, *same-origin, omit
+				redirect: 'follow',
+				headers: {
+					'Content-Type': 'text/plain;charset=utf-8'
 				}
-			);
+			});
 			console.log(JSON.stringify(resp));
 			console.log('Check');
 			if (resp.ok) {
