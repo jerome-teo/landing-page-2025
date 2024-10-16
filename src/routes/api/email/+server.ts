@@ -7,11 +7,7 @@ export async function POST({request}: RequestEvent): Promise<Response> {
   const { userId, name, college, needsTravelStipend } = await request.json();
   try {
     const url = SCRIPTS_API + "?" + new URLSearchParams({
-      endpoint: "upsertOneStatus",
-      userId,
-      name,
-      college,
-      needsTravelStipend: needsTravelStipend.toString()
+      endpoint: "upsertOneStatus"
     });
     console.log("Posting to URL: ", url);
     const response = await fetch(url,
@@ -19,7 +15,13 @@ export async function POST({request}: RequestEvent): Promise<Response> {
         method: "POST",
         headers: {
           "Content-type": "application/json;charset=UTF-8"
-        }
+        },
+        body: JSON.stringify({
+          userId,
+          name,
+          college,
+          needsTravelStipend
+        })
       }
     );
     const body = await response.json();
