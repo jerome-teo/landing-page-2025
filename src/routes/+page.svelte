@@ -12,7 +12,7 @@
 		href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=yellow"
 		target="_blank"
 		><img
-			src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-yellow.svg"
+			src="https://images.squarespace-cdn.com/content/v1/65b741a25c094207b27f1ddb/2ddcbe17-62cb-4bd0-8573-cf1b6c0b1d35/image-removebg-preview+%282%29.png"
 			alt="Major League Hacking 2024 Hackathon Season"
 			style="width:100%"
 		/></a

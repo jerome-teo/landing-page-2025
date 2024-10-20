@@ -84,11 +84,17 @@
 
 <div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
 	<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
-		<div class="front">
-			<img src={PostcardFront} alt="postcard front" />
+		<div
+			class="front"
+			aria-label="front of postcard. click or press on any key to flip card to the back!"
+		>
+			<img src={PostcardFront} alt="postcard front " />
 			<div class="overlay-text tentang-nanti">Click me to flip me!</div>
 		</div>
-		<div class="back cardback">
+		<div
+			class="back cardback"
+			aria-label="back of postcard. fill in your information here to register."
+		>
 			<!-- <img src={Back} alt="postcard back" /> -->
 			<div class="postcard">
 				<!-- Left side: Address and message -->
@@ -96,7 +102,7 @@
 					<img src={Stamp} class="stamp relative" alt="stamp" />
 					<div class="pad" />
 					<div class="welcome input-field tentang-nanti">See you there!</div>
-					<div class="address spectral sm:text-sm">UCLA, Los Angeles</div>
+					<div class="address spectral">UCLA, Los Angeles</div>
 					<div class="address spectral">CA 90024</div>
 				</div>
 				<div class="center" />
@@ -108,6 +114,7 @@
 							<div class="input-group flex-col flex">
 								<label class="input-label rubik purple" for="fullName">Full Name</label>
 								<input
+									aria-label="name"
 									type="text"
 									id="fullName"
 									bind:value={name_participant}
@@ -122,6 +129,7 @@
 									>College or University</label
 								>
 								<input
+									aria-label="university"
 									type="text"
 									id="university"
 									bind:value={school}
@@ -134,6 +142,7 @@
 							<div class="input-group flex flex-col">
 								<label class="input-label rubik purple" for="email">Email Address</label>
 								<input
+									aria-label="email"
 									type="email"
 									id="email"
 									bind:value={text}
@@ -144,6 +153,7 @@
 							</div>
 							<div class="checkbox-container">
 								<input
+									aria-label="checkbox for travel stipend"
 									type="checkbox"
 									bind:checked={isChecked}
 									id="stipend"
@@ -155,7 +165,12 @@
 							<div style="height: 10px" />
 							<div class="w-full flex justify-center items-center">
 								{#if !loading}
-									<button type="submit" id="submit" class="submit-btn rubik-submit">
+									<button
+										aria-label="submit"
+										type="submit"
+										id="submit"
+										class="submit-btn rubik-submit"
+									>
 										Submit
 									</button>
 								{:else}
