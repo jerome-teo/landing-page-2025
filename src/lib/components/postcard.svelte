@@ -93,10 +93,10 @@
 			<div class="postcard">
 				<!-- Left side: Address and message -->
 				<div class="left">
-					<img src={Stamp} class="stamp" alt="stamp" />
+					<img src={Stamp} class="stamp relative" alt="stamp" />
 					<div class="pad" />
-					<div class="welcome tentang-nanti">See you there!</div>
-					<div class="address spectral">UCLA, Los Angeles</div>
+					<div class="welcome input-field tentang-nanti">See you there!</div>
+					<div class="address spectral sm:text-sm">UCLA, Los Angeles</div>
 					<div class="address spectral">CA 90024</div>
 				</div>
 				<div class="center" />
@@ -230,6 +230,12 @@
 		.input-field {
 			font-size: 9px;
 		}
+		.address {
+			font-size: 6px;
+		}
+		.rubik-submit {
+			font-size: 6px;
+		}
 	}
 	@media (min-width: 400px) {
 		/* Target small screens like phones */
@@ -246,6 +252,12 @@
 		.input-field {
 			font-size: 10px;
 		}
+		.address {
+			font-size: 7px;
+		}
+		.rubik-submit {
+			font-size: 6px;
+		}
 	}
 	@media (min-width: 500px) {
 		/* Target small screens like phones */
@@ -257,6 +269,9 @@
 			font-size: 25px;
 		}
 		.rubik {
+			font-size: 8px;
+		}
+		.rubik-submit {
 			font-size: 8px;
 		}
 		.input-field {
@@ -274,6 +289,9 @@
 		.rubik {
 			font-size: 10px;
 		}
+		.address {
+			font-size: 9px;
+		}
 	}
 	@media (min-width: 768px) {
 		.container {
@@ -282,6 +300,9 @@
 		}
 		.overlay-text {
 			font-size: 29px;
+		}
+		.rubik-submit {
+			font-size: 12px;
 		}
 	}
 	/* Extra-large screens (min-width: 1200px) */
@@ -292,6 +313,9 @@
 		}
 		.overlay-text {
 			font-size: 30px;
+		}
+		.rubik-submit {
+			font-size: 14px;
 		}
 	}
 	/* .container {
@@ -421,12 +445,13 @@
 	.center {
 		/* width: 10%; */
 		width: 0.5px;
-		height: 300px; /* The height of the vertical line */
+		height: auto; /* The height of the vertical line */
 		background-color: rgba(0, 0, 0, 0.3); /* Faint line color */
 		margin: 0 20px;
 	}
 	.right {
-		width: 62.5%; /* Ensure both the left and right sides take up equal space */
+		width: 62.5%;
+		height: 70%; /* Ensure both the left and right sides take up equal space */
 	}
 	input,
 	button {
@@ -444,14 +469,14 @@
 		border-bottom: 0.5px solid #abb2b2; /* Apply only bottom border */
 		padding: 5px; /* Optional: Add padding */
 		outline: none;
-		font-size: 20px;
+		/* font-size: 20px; */
 	}
 	.address {
 		border: none; /* Remove all borders */
 		border-bottom: 0.5px solid #abb2b2; /* Apply only bottom border */
 		padding: 5px; /* Optional: Add padding */
 		outline: none;
-		font-size: 13px;
+		/* font-size: 13px; */
 	}
 	.submit-btn {
 		display: inline-block;
@@ -504,7 +529,7 @@
 	}
 	.rubik-submit {
 		font-family: 'Rubik';
-		font-size: 12px;
+		/* font-size: 12px; */
 	}
 	.rubik.purple {
 		color: #474580;
