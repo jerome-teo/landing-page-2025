@@ -2,20 +2,23 @@
 	import FrontClouds from '$lib/media/front_clouds.svg';
 	import MiddleClouds from '$lib/media/middle_clouds.svg';
 	import BackClouds from '$lib/media/back_clouds.svg';
+	import Background from '$lib/media/background.svg';
 
 	import Skyscrapers from '$lib/media/skyscrapers.svg';
 	import Shadows from '$lib/media/shadows.svg';
 </script>
 
+<!-- style="z-index:0;background: linear-gradient(180deg, #6ad4ff 0%, #e27272 48%);mix-blend-mode:multiply" -->
+
 <div class="w-full h-full">
 	<div
 		id="bg-overlay"
 		class="fixed left-0 top-0 w-full h-full"
-		style="z-index:0;background: linear-gradient(180deg, #6ad4ff 0%, #e27272 48%);mix-blend-mode:multiply"
+		style="z-index:0;background: url({Background}); mix-blend-mode: multiply; background-size:cover;"
 	/>
 	<div class="skyline">
 		<img src={FrontClouds} alt="clouds" class="cloud cloudA relative group1 w-full" />
-		<img src={FrontClouds} alt="clouds" class="cloud cloudA  relative group2 w-full" />
+		<img src={FrontClouds} alt="clouds" class="cloud cloudA relative group2 w-full" />
 		<img src={MiddleClouds} alt="clouds" class="cloud cloudB group1 w-11/12" />
 		<img src={MiddleClouds} alt="clouds" class="cloud cloudB group2 w-11/12" />
 		<img src={BackClouds} alt="clouds" class="cloud cloudC group1 w-full" />
