@@ -8,7 +8,7 @@
 	<Postcard />
 </div>
 
-<div
+<!-- <div
 	class="mt-auto max-w-prose text-center py-5 px-5 text-white font-reactor7 text-2xl lg:text-3xl"
 	style="text-shadow:#200b3a 2px 0px 0px,#200b3a -2px 0px 0px,#200b3a 0px 2px 0px,#200b3a 0px -2px 0px"
 >
@@ -16,7 +16,7 @@
 		href="https://drive.google.com/file/d/1cku-kfT8NT3Xq5RgUDfZZ5lyHzVK3M4N/view"
 		class="underline text-sky-light">Check out our sponsorship packet</a
 	>!
-</div>
+</div> -->
 
 <style>
 	.outlined::after {

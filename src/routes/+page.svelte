@@ -2,6 +2,7 @@
 	import Background from '$lib/components/background.svelte';
 	import Hero from '$lib/components/hero.svelte';
 	import Logo from '$lib/components/logo.svelte';
+	import Postcard from '$lib/components/postcard.svelte';
 </script>
 
 <div class="w-full h-full overflow-hidden overscroll-contain">
@@ -23,7 +24,7 @@
 		<Logo />
 	</div>
 	<div id="content" class="z-10 flex flex-col items-center justify-center w-screen h-screen">
-		<Hero />
+		<Postcard />
 	</div>
 </div>
 

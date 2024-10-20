@@ -16,9 +16,18 @@
 	onMount(() => {
 		setTimeout(() => {
 			isLoaded = true;
-		}, 300); // Delay to start the animation
+		}, 300);
+		if (typeof window !== 'undefined') {
+			window.addEventListener('keydown', toggleFlip);
+		} // Delay to start the animation
+		// return () => {
+		// 	// Clean up the event listener when the component is destroyed
+		// 	if (typeof window !== 'undefined') {
+		// 		window.removeEventListener('keydown', toggleFlip);
+		// 	}
+		// };
 	});
-
+	// window.addEventListener('keydown', toggleFlip);
 	//Email portion
 	import Arrow from '$lib/media/arrow.svg';
 	import { Circle2, Circle } from 'svelte-loading-spinners';
@@ -39,7 +48,7 @@
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
-		
+
 		try {
 			const resp = await fetch('/api/email', {
 				method: 'POST',
@@ -47,7 +56,7 @@
 					name: name_participant,
 					college: school,
 					userId: text,
-					needsTravelStipend: isChecked,
+					needsTravelStipend: isChecked
 				}),
 				headers: {
 					'content-type': 'application/json'
@@ -73,10 +82,11 @@
 	}
 </script>
 
-<div class="container" on:click={toggleFlip}>
+<div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
 	<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
 		<div class="front">
 			<img src={PostcardFront} alt="postcard front" />
+			<div class="overlay-text tentang-nanti">Click me to flip me!</div>
 		</div>
 		<div class="back cardback">
 			<!-- <img src={Back} alt="postcard back" /> -->
@@ -92,10 +102,10 @@
 				<div class="center" />
 				<!-- Right side: Sign-up form -->
 				<div class="right">
-					<img src={Updates} alt="Sign up for Updates!" />
+					<img src={Updates} alt="Sign up for Updates!" class="updates" />
 					<form on:submit|preventDefault={submitHandler}>
 						{#if error === undefined && !success}
-							<div class="input-group">
+							<div class="input-group flex-col flex">
 								<label class="input-label rubik purple" for="fullName">Full Name</label>
 								<input
 									type="text"
@@ -106,7 +116,7 @@
 								/>
 							</div>
 
-							<div class="input-group">
+							<div class="input-group flex-col flex">
 								<label class="input-label rubik purple" for="university"
 									>College or University</label
 								>
@@ -119,7 +129,7 @@
 								/>
 							</div>
 
-							<div class="input-group">
+							<div class="input-group flex flex-col">
 								<label class="input-label rubik purple" for="email">Email Address</label>
 								<input
 									type="email"
@@ -163,7 +173,7 @@
 							</div>
 						{:else}
 							<div>
-								<p class="text-center spectral italic text-grey text-m ">
+								<p class="text-center spectral italic text-grey text-m">
 									Error encountered. Please reload and try again.
 								</p>
 							</div>
@@ -172,58 +182,6 @@
 					</form>
 				</div>
 			</div>
-			<!-- <form
-				class="flex w-full max-w-[40ch] lg:max-w-[50ch] xl:max-w-[65ch] relative justify-between gap-6 md:gap-8 email-form"
-				on:submit|preventDefault={submitHandler}
-			>
-				{#if error === undefined && !success}
-					<div>
-						<div>
-							<input
-								bind:value={text}
-								type="email"
-								placeholder="Enter your email for updatesC"
-								class=" w-2/3 px-5 py-2 leading-tight text-gray-900 border border-gray-500 appearance-none font-serif lg:text-1.5xl xl:text-4xl focus:shadow-outline"
-							/>
-						</div>
-						<div class="w-full mt-4 flex-grow">
-							<label class="flex items-center space-x-2">
-								<input type="checkbox" bind:checked={isChecked} class="mr-2" />
-								<span class="text-gray-900 spectral flex-grow lg:text-1.5xl xl:text-4xl ml-3">
-									I would like a stipend UCLA!C</span
-								>
-								{#if !loading}
-									<button type="submit" id="submit" class="submit-btn">
-										Send
-									</button>
-								{:else}
-									<button
-										disabled
-										type="submit"
-										id="submit"
-										class="px-2 py-2"
-										style="background:#fbf8f2"
-									>
-									</button>
-								{/if}
-							</label>
-						</div>
-					</div>
-				{:else if success}
-					<div>
-						<p class="text-center font-reactor7 text-white text-xl lg:text-5xl">
-							Thank you! Please keep an eye on your email for more info.
-						</p>
-					</div>
-				{:else}
-					<div>
-						<p class="text-center font-reactor7 text-white text-xl lg:text-5xl">
-							Error encountered. Please reload and try again.
-						</p>
-					</div>
-					<div class="max-h-[7ch] overflow-scroll">Error: {error}</div>
-				{/if}
-			</form> -->
 		</div>
 	</div>
 </div>
@@ -249,9 +207,123 @@
 	}
 
 	.container {
-		width: 500px;
-		height: 354px;
+		/* width: 60%; */
+		/* max-width: 500px; */
+		height: auto;
+		aspect-ratio: 500/354;
+		/* min-height: auto; */
 		perspective: 800px;
+	}
+
+	@media (max-width: 400px) {
+		/* Target small screens like phones */
+		.container {
+			width: 90%;
+			margin-top: -50%;
+		}
+		.overlay-text {
+			font-size: 15px;
+		}
+		.rubik {
+			font-size: 7px;
+		}
+		.input-field {
+			font-size: 9px;
+		}
+	}
+	@media (min-width: 400px) {
+		/* Target small screens like phones */
+		.container {
+			margin-top: -30%;
+			width: 80%;
+		}
+		.overlay-text {
+			font-size: 20px;
+		}
+		.rubik {
+			font-size: 8px;
+		}
+		.input-field {
+			font-size: 10px;
+		}
+	}
+	@media (min-width: 500px) {
+		/* Target small screens like phones */
+		.container {
+			margin-top: -10%;
+			width: 70%;
+		}
+		.overlay-text {
+			font-size: 25px;
+		}
+		.rubik {
+			font-size: 8px;
+		}
+		.input-field {
+			font-size: 13px;
+		}
+	}
+	@media (min-width: 585px) {
+		.container {
+			margin-top: -2%; /* Adjust for large screens */
+			width: 68%; /* Narrower width */
+		}
+		.overlay-text {
+			font-size: 29px;
+		}
+		.rubik {
+			font-size: 10px;
+		}
+	}
+	@media (min-width: 768px) {
+		.container {
+			margin-top: 5%; /* Adjust for large screens */
+			width: 60%; /* Narrower width */
+		}
+		.overlay-text {
+			font-size: 29px;
+		}
+	}
+	/* Extra-large screens (min-width: 1200px) */
+	@media (min-width: 900px) {
+		.container {
+			margin-top: 3%; /* Adjust for extra-large screens */
+			width: 45%; /* Narrow width for big screens */
+		}
+		.overlay-text {
+			font-size: 30px;
+		}
+	}
+	/* .container {
+		width: 90vw;
+		height: 
+		max-width: 500px;
+		max-height: 354px;
+		perspective: 800px;
+	} */
+
+	.front {
+		position: relative;
+		width: 100%;
+		padding-bottom: 70.8%;
+	}
+
+	.front img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+	}
+	.overlay-text {
+		position: absolute;
+		top: 6%; /* Adjust to your needs */
+		right: 2%; /* Adjust to your needs */
+		/* background-color: rgba(0, 0, 0, 0.6); Optional: to make the text stand out */
+		color: black;
+		padding: 5px 10px;
+		/* font-size: 29px; */
+		border-radius: 5px;
+		rotate: 10deg;
 	}
 	.flipped {
 		transform: rotateY(180deg);
@@ -270,7 +342,9 @@
 		height: 100%;
 		width: 100%;
 		position: relative;
-		transition: transform 1500ms ease, top 500ms ease;
+		transition:
+			transform 1500ms ease,
+			top 500ms ease;
 		transform-style: preserve-3d;
 		top: 100vh;
 	}
@@ -279,7 +353,7 @@
 			top: 100vh; /* Start off-screen */
 		}
 		to {
-			top: 0%; /* Move to the center */
+			top: -25%; /* Move to the center */
 		}
 	}
 
@@ -359,7 +433,11 @@
 		background-color: #f5ffff;
 		outline: solid 0.5px #abb2b2;
 	}
-
+	input {
+		width: 20vw; /* The input will always be 50% of the viewport width */
+		padding: 1vw; /* Padding adjusts based on viewport width */
+		/* font-size: 0vw; */
+	}
 	input,
 	.welcome {
 		border: none; /* Remove all borders */
@@ -422,7 +500,7 @@
 	}
 	.rubik {
 		font-family: 'Rubik';
-		font-size: 15px;
+		/* font-size: 15px; */
 	}
 	.rubik-submit {
 		font-family: 'Rubik';
@@ -431,9 +509,9 @@
 	.rubik.purple {
 		color: #474580;
 	}
-	.input-field {
+	/* .input-field {
 		font-size: 13px;
-	}
+	} */
 	.pad {
 		height: 10%;
 	}
@@ -451,7 +529,9 @@
 		border-radius: 4px;
 		position: relative;
 		cursor: pointer;
-		transition: background-color 0.2s ease, border-color 0.2s ease;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
 	}
 
 	.checkbox-input:checked {

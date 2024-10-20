@@ -3,9 +3,12 @@
 </script>
 
 <!-- <div id="logo-parent" class="w-full grid grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-5"> -->
-<div id="logo-parent" class="w-full top-1/4 scale-50">
+<div id="logo-parent" class="w-full scale-50">
 	<!-- Added top padding here -->
-	<div id="image" class="w-full items-start justify-start pl-4">
+	<div
+		id="image"
+		class="w-full logo items-start justify-start sm:pt-0 md:justify-center lg:justify-start pl-8 md:pl-0 lg:pl-12"
+	>
 		<!-- Added left padding here -->
 		<!-- Logo image -->
 		<img src={Logo} alt="QWERHACKS Logo" class="w-[100%] max-w-none md:w-[70%] h-auto" />
@@ -13,7 +16,6 @@
 </div>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600&display=swap');
 	.name {
 		display: grid;
 		grid-template-areas: 'zero';
@@ -34,18 +36,36 @@
 		left: 20px;
 		top: 20px;
 	}
-	span {
-		font-family: 'Fredoka', sans-serif;
-		font-size: max(3.5vw, 1.4rem);
-		color: white;
-	}
-	.ucla {
-		position: relative;
-		color: white;
-		left: 25%;
-		bottom: -12%;
-	}
+
 	.date {
 		margin-top: -3%;
+	}
+	@media (min-width: 585px) and (max-width: 666px) {
+		.logo {
+			width: 70%;
+			justify-items: left;
+		}
+	}
+	@media (min-width: 666px) {
+		.logo {
+			width: 60%;
+			justify-items: left;
+		}
+	}
+	@media (min-width: 768px) {
+		.logo {
+			width: 80%;
+			justify-items: left;
+			margin-top: 25%;
+			position: absolute;
+		}
+	}
+	@media (min-width: 900px) {
+		.logo {
+			width: 80%;
+			justify-items: left;
+			margin-top: 15%;
+			position: absolute;
+		}
 	}
 </style>
