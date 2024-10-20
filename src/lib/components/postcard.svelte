@@ -20,12 +20,12 @@
 		if (typeof window !== 'undefined') {
 			window.addEventListener('keydown', toggleFlip);
 		} // Delay to start the animation
-		// return () => {
-		// 	// Clean up the event listener when the component is destroyed
-		// 	if (typeof window !== 'undefined') {
-		// 		window.removeEventListener('keydown', toggleFlip);
-		// 	}
-		// };
+		return () => {
+			// Clean up the event listener when the component is destroyed
+			if (typeof window !== 'undefined') {
+				window.removeEventListener('keydown', toggleFlip);
+			}
+		};
 	});
 	// window.addEventListener('keydown', toggleFlip);
 	//Email portion
@@ -112,7 +112,8 @@
 									id="fullName"
 									bind:value={name_participant}
 									class="input-field spectral italic w-full"
-									placeholder="Steve Jobs"
+									placeholder="Chappell Roan"
+									required
 								/>
 							</div>
 
@@ -125,7 +126,8 @@
 									id="university"
 									bind:value={school}
 									class="input-field spectral italic w-full"
-									placeholder="UCLA"
+									placeholder="Floptropica University"
+									required
 								/>
 							</div>
 
@@ -136,7 +138,8 @@
 									id="email"
 									bind:value={text}
 									class="input-field spectral italic w-full"
-									placeholder="steve@apple.com"
+									placeholder="lilnasx@gmail.com"
+									required
 								/>
 							</div>
 							<div class="checkbox-container">
@@ -187,7 +190,6 @@
 </div>
 
 <style>
-	@import url(https://db.onlinewebfonts.com/c/3101d0058e2d7317cd5a5af7a1216ff3?family=Reactor7);
 	@import url(https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap);
 	* {
 		margin: 0;
@@ -295,7 +297,7 @@
 	}
 	@media (min-width: 768px) {
 		.container {
-			margin-top: 5%; /* Adjust for large screens */
+			margin-top: -6%; /* Adjust for large screens */
 			width: 60%; /* Narrower width */
 		}
 		.overlay-text {
