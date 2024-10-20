@@ -190,13 +190,15 @@
 						{:else if success}
 							<div>
 								<p class="text-center spectral italic text-grey text-m">
-									Thank you! Please keep an eye on your email for more info.
+									Thank you! Please keep an eye on your email for more info. For any other concerns,
+									please contact qwerhacks@gmail.com.
 								</p>
 							</div>
 						{:else}
 							<div>
 								<p class="text-center spectral italic text-grey text-m">
-									Error encountered. Please reload and try again.
+									Error encountered. Please reload and try again. For any other concerns, please
+									contact qwerhacks@gmail.com.
 								</p>
 							</div>
 							<div class="max-h-[7ch] overflow-scroll">Error: {error}</div>
