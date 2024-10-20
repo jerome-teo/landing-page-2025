@@ -181,7 +181,10 @@
 										class="px-2 py-2"
 										style="background:#fbf8f2"
 									/> -->
-									<div class="lds-ripple"></div>
+									<div class="lds-ripple">
+										<div></div>
+										<div></div>
+									</div>
 								{/if}
 							</div>
 						{:else if success}
@@ -623,7 +626,7 @@
 	}
 	.lds-ripple div {
 		position: absolute;
-		border: 4px solid currentColor;
+		border: 4px solid #3d00b7;
 		opacity: 1;
 		border-radius: 50%;
 		animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
