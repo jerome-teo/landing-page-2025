@@ -1,17 +1,14 @@
 <script lang="ts">
-	import Logo from '../media/logo.svg';
+	import Logo from '../media/QWERHacks.svg';
 </script>
 
 <!-- <div id="logo-parent" class="w-full grid grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-5"> -->
-<div id="logo-parent" class="w-full scale-50">
+<div id="logo-parent" class="w-full">
 	<!-- Added top padding here -->
-	<div
-		id="image"
-		class="w-full logo items-start justify-start sm:pt-0 md:justify-center lg:justify-start pl-8 md:pl-0 lg:pl-12"
-	>
+	<div id="image" class="w-full logo sm:pt-0">
 		<!-- Added left padding here -->
 		<!-- Logo image -->
-		<img src={Logo} alt="QWERHACKS Logo" class="w-[100%] max-w-none md:w-[70%] h-auto" />
+		<img src={Logo} alt="QWERHACKS Logo" class=" absolute md:w-[40%] h-auto" />
 	</div>
 </div>
 
@@ -56,15 +53,16 @@
 		.logo {
 			width: 80%;
 			justify-items: left;
-			margin-top: 25%;
-			position: absolute;
+			/* margin-top: 25%; */
+			/* position: absolute; */
 		}
 	}
 	@media (min-width: 900px) {
 		.logo {
 			width: 80%;
 			justify-items: left;
-			margin-top: 15%;
+			/* margin-top: 5%; */
+			padding: 5%;
 			position: absolute;
 		}
 	}

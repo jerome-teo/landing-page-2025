@@ -160,7 +160,9 @@
 									name="stipend"
 									class="checkbox-input"
 								/>
-								<label for="stipend" class="checkbox-label">I would like a stipend!</label>
+								<label for="stipend" class="checkbox-label"
+									>I need assistance with traveling from outside of Los Angeles.</label
+								>
 							</div>
 							<div style="height: 10px" />
 							<div class="w-full flex justify-center items-center">
@@ -259,6 +261,9 @@
 		.rubik-submit {
 			font-size: 6px;
 		}
+		.checkbox-label {
+			font-size: 6px;
+		}
 	}
 	@media (min-width: 400px) {
 		/* Target small screens like phones */
@@ -281,6 +286,9 @@
 		.rubik-submit {
 			font-size: 6px;
 		}
+		.checkbox-label {
+			font-size: 7px;
+		}
 	}
 	@media (min-width: 500px) {
 		/* Target small screens like phones */
@@ -300,6 +308,9 @@
 		.input-field {
 			font-size: 13px;
 		}
+		.checkbox-label {
+			font-size: 8px;
+		}
 	}
 	@media (min-width: 585px) {
 		.container {
@@ -315,6 +326,9 @@
 		.address {
 			font-size: 9px;
 		}
+		.checkbox-label {
+			font-size: 10px;
+		}
 	}
 	@media (min-width: 768px) {
 		.container {
@@ -326,6 +340,12 @@
 		}
 		.rubik-submit {
 			font-size: 12px;
+		}
+		.rubik {
+			font-size: 13px;
+		}
+		.checkbox-label {
+			font-size: 10px;
 		}
 	}
 	/* Extra-large screens (min-width: 1200px) */
@@ -340,6 +360,68 @@
 		.rubik-submit {
 			font-size: 14px;
 		}
+		.rubik {
+			font-size: 15px;
+		}
+		.checkbox-label {
+			font-size: 10px;
+		}
+	}
+	@media (min-width: 1200px) {
+		.container {
+			margin-top: 3%; /* Adjust for extra-large screens */
+			width: 45%; /* Narrow width for big screens */
+		}
+		.overlay-text {
+			font-size: 30px;
+		}
+		.rubik-submit {
+			font-size: 14px;
+		}
+		.rubik {
+			font-size: 15px;
+		}
+		.checkbox-label {
+			font-size: 12px;
+		}
+	}
+	@media (min-width: 1500px) {
+		.container {
+			margin-top: 3%; /* Adjust for extra-large screens */
+			width: 45%; /* Narrow width for big screens */
+		}
+		.overlay-text {
+			font-size: 30px;
+		}
+		.rubik-submit {
+			margin-top: 10px;
+			font-size: 16px;
+		}
+		.rubik {
+			font-size: 17px;
+		}
+		.checkbox-label {
+			font-size: 13px;
+		}
+	}
+	@media (min-width: 1800px) {
+		.container {
+			margin-top: 3%; /* Adjust for extra-large screens */
+			width: 45%; /* Narrow width for big screens */
+		}
+		.overlay-text {
+			font-size: 30px;
+		}
+		.rubik-submit {
+			margin-top: 20px;
+			font-size: 18px;
+		}
+		.rubik {
+			font-size: 23px;
+		}
+		.checkbox-label {
+			font-size: 15px;
+		}
 	}
 	/* .container {
 		width: 90vw;
@@ -348,6 +430,28 @@
 		max-height: 354px;
 		perspective: 800px;
 	} */
+	@media (min-aspect-ratio: 5/7) and (max-aspect-ratio: 7/5) {
+		.container {
+			width: 70vw; /* Adjust for squarer screens */
+			height: auto;
+		}
+		.rubik-submit {
+			margin-top: 20px;
+			font-size: 1.5vw;
+		}
+		.rubik {
+			font-size: 1.6vw;
+		}
+		.checkbox-label {
+			font-size: 1.3vw;
+		}
+		.input-field {
+			font-size: 1.5vw;
+		}
+		.address {
+			font-size: 1.4vw;
+		}
+	}
 
 	.front {
 		position: relative;
@@ -599,7 +703,6 @@
 
 	.checkbox-label {
 		margin-left: 10px;
-		font-size: 10px;
 		color: #535a5a;
 		cursor: pointer; /* Makes the label clickable */
 		font-family: 'Spectral', serif;
