@@ -66,4 +66,13 @@
 			position: absolute;
 		}
 	}
+	@media (min-aspect-ratio: 3/2) and (max-aspect-ratio: 22/9) {
+		.logo {
+			width: 80%;
+			/* justify-items: left; */
+			/* margin-top: 5%; */
+			padding: 2%;
+			position: absolute;
+		}
+	}
 </style>
