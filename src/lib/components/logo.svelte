@@ -5,10 +5,10 @@
 <!-- <div id="logo-parent" class="w-full grid grid-rows-2 md:grid-cols-2 md:grid-rows-1 gap-5"> -->
 <div id="logo-parent" class="w-full">
 	<!-- Added top padding here -->
-	<div id="image" class="w-full logo sm:pt-0">
+	<div id="image" class="w-full logo">
 		<!-- Added left padding here -->
 		<!-- Logo image -->
-		<img src={Logo} alt="QWERHACKS Logo" class=" absolute md:w-[40%] h-auto" />
+		<img src={Logo} alt="QWERHACKS Logo" class=" absolute" />
 	</div>
 </div>
 
@@ -37,10 +37,11 @@
 	.date {
 		margin-top: -3%;
 	}
-	@media (min-width: 585px) and (max-width: 666px) {
+	/* @media (min-width: 585px) and (max-width: 666px) {
 		.logo {
 			width: 70%;
-			justify-items: left;
+			justify-items: center;
+			padding-top: 20%;
 		}
 	}
 	@media (min-width: 666px) {
@@ -53,25 +54,43 @@
 		.logo {
 			width: 80%;
 			justify-items: left;
-			/* margin-top: 25%; */
-			/* position: absolute; */
 		}
 	}
 	@media (min-width: 900px) {
 		.logo {
 			width: 80%;
 			justify-items: left;
+			padding: 5%;
+			position: absolute;
+		}
+	} */
+	@media (max-aspect-ratio: 5/6) {
+		.logo {
+			width: 100%;
+			justify-items: center;
+			align-items: center;
+			/* margin-top: 5%; */
+			padding-top: 7%;
+			position: absolute;
+		}
+	}
+	@media (min-aspect-ratio: 5/6) and (max-aspect-ratio: 7/5) {
+		.logo {
+			width: 40%;
+			justify-items: center;
+			align-items: center;
 			/* margin-top: 5%; */
 			padding: 5%;
 			position: absolute;
 		}
 	}
-	@media (min-aspect-ratio: 3/2) and (max-aspect-ratio: 22/9) {
+	@media (min-aspect-ratio: 7/5) {
 		.logo {
-			width: 80%;
-			/* justify-items: left; */
+			width: 30%;
+			justify-items: left;
+			align-items: left;
 			/* margin-top: 5%; */
-			padding: 2%;
+			padding: 5%;
 			position: absolute;
 		}
 	}

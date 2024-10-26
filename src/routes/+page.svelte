@@ -20,7 +20,7 @@
 	<div id="background" class="absolute w-full h-full -z-10">
 		<Background />
 	</div>
-	<div class="w-full max-w-none md:w-[70%] h-1/5 place-items-start grid md:p-0">
+	<div class="w-full max-w-none h-1/5 place-items-start grid">
 		<Logo />
 	</div>
 	<div id="content" class="z-10 flex flex-col items-center justify-center w-screen h-screen">
