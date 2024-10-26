@@ -45,6 +45,68 @@
 
 	let loading: boolean = false;
 
+	const names = [
+		'Chappell Roan',
+		'Elton John',
+		'Lady Gaga',
+		'RuPaul',
+		'Neil Patrick Harris',
+		'Jodie Foster',
+		'Anderson Cooper',
+		'Laverne Cox',
+		'Frank Ocean',
+		'Kate McKinnon',
+		'Sara Ramirez',
+		'Sam Smith',
+		'Kim Petras',
+		'Hayley Kiyoko',
+		'Elliot Page',
+		'Troye Sivan',
+		'Lil Nas X',
+		'Miley Cyrus',
+		'Conrad Ricamora',
+		'Viola Davis'
+	];
+	const fictionalEmails = [
+		'chappell@roan.com',
+		'elton@john.com',
+		'lady@gaga.com',
+		'rupaul@charles.com',
+		'neil@harris.com',
+		'jodie@foster.com',
+		'anderson@cooper.com',
+		'laverne@cox.com',
+		'frank@ocean.com',
+		'kate@mckinnon.com',
+		'sara@ramirez.com',
+		'sam@smith.com',
+		'kim@petras.com',
+		'hayley@kiyoko.com',
+		'elliot@page.com',
+		'troye@sivan.com',
+		'lil@nas.com',
+		'miley@cyrus.com',
+		'conrad@ricamora.com',
+		'viola@davis.com',
+		'hanya@alittlelife.com',
+		'fabfive@queereye.com',
+		'alice@thecolorpurple.com',
+		'garrard@boyerased.com',
+		'carmen@herbodyandotherparties.com',
+		'madeline@thesongofachilles.com',
+		'elizabeth@withthefireonhigh.com'
+	];
+
+	function getRandomName() {
+		return names[Math.floor(Math.random() * names.length)];
+	}
+	function getRandomEmail() {
+		return fictionalEmails[Math.floor(Math.random() * names.length)];
+	}
+
+	// Step 3: Reactive variable to hold the random name
+	let placeholderName = getRandomName();
+	let placeholderEmail = getRandomEmail();
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
@@ -102,8 +164,8 @@
 					<img src={Stamp} class="stamp relative" alt="stamp" />
 					<div class="pad" />
 					<div class="welcome input-field tentang-nanti">See you there!</div>
-					<div class="address spectral">UCLA, Los Angeles</div>
-					<div class="address spectral">CA 90024</div>
+					<div class="address spectral">January 24-26, 2025</div>
+					<div class="address spectral">UCLA, CA 90024</div>
 				</div>
 				<div class="center" />
 				<!-- Right side: Sign-up form -->
@@ -119,7 +181,7 @@
 									id="fullName"
 									bind:value={name_participant}
 									class="input-field spectral italic w-full"
-									placeholder="Chappell Roan"
+									placeholder={placeholderName}
 									required
 								/>
 							</div>
@@ -147,7 +209,7 @@
 									id="email"
 									bind:value={text}
 									class="input-field spectral italic w-full"
-									placeholder="lilnasx@gmail.com"
+									placeholder={placeholderEmail}
 									required
 								/>
 							</div>
