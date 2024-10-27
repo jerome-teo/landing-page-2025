@@ -648,7 +648,7 @@
 		outline: solid 0.5px #abb2b2;
 	}
 	input {
-		width: 20vw; /* The input will always be 50% of the viewport width */
+		/* The input will always be 50% of the viewport width */
 		padding: 1vw; /* Padding adjusts based on viewport width */
 		/* font-size: 0vw; */
 	}
