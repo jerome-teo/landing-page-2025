@@ -3,6 +3,8 @@
 	import Hero from '$lib/components/hero.svelte';
 	import Logo from '$lib/components/logo.svelte';
 	import Postcard from '$lib/components/postcard.svelte';
+
+	document.body.style.overflow = 'hidden';
 </script>
 
 <div class="w-full h-full overflow-hidden overscroll-contain">
