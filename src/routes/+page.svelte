@@ -3,19 +3,6 @@
 	import Hero from '$lib/components/hero.svelte';
 	import Logo from '$lib/components/logo.svelte';
 	import Postcard from '$lib/components/postcard.svelte';
-	import { onMount } from 'svelte';
-	onMount(() => {
-		if (typeof window !== 'undefined') {
-			document.body.style.overflow = 'hidden';
-			document.addEventListener(
-				'touchmove',
-				(e) => {
-					e.preventDefault();
-				},
-				{ passive: false }
-			);
-		} // Delay to start the animation
-	});
 </script>
 
 <div class="w-full h-full overflow-hidden overscroll-contain">
@@ -54,6 +41,9 @@
 </svelte:head>
 
 <style>
+	#main-content {
+		min-height: 100vh; /* Full viewport height */
+	}
 	.c {
 		mix-blend-mode: screen;
 	}
