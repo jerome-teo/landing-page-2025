@@ -65,7 +65,12 @@
 		'Lil Nas X',
 		'Miley Cyrus',
 		'Conrad Ricamora',
-		'Viola Davis'
+		'Viola Davis',
+		'Ennis Del Mar',
+		'Jack Twist',
+		'Gus Fring',
+		'Denise Cloyd',
+		'Tara Chambler'
 	];
 	const fictionalEmails = [
 		'chappell@roan.com',
@@ -84,7 +89,7 @@
 		'hayley@kiyoko.com',
 		'elliot@page.com',
 		'troye@sivan.com',
-		'lil@nas.com',
+		'lilnasx@montero.com',
 		'miley@cyrus.com',
 		'conrad@ricamora.com',
 		'viola@davis.com',
@@ -94,7 +99,9 @@
 		'garrard@boyerased.com',
 		'carmen@herbodyandotherparties.com',
 		'madeline@thesongofachilles.com',
-		'elizabeth@withthefireonhigh.com'
+		'elizabeth@withthefireonhigh.com',
+		'gus&max@lospolloshermanos.com',
+		'ennis&jack@brokeback.com'
 	];
 
 	function getRandomName() {
