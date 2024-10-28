@@ -13,7 +13,7 @@
 <div class="w-full h-full">
 	<div
 		id="bg-overlay"
-		class="fixed left-[-5%] top-0 h-full w-[110%]"
+		class="fixed left-[-5%] top-0 h-[105%] w-[110%]"
 		style="z-index:0;background: url({Background}); mix-blend-mode: multiply; background-size:cover;"
 	/>
 	<div class="skyline">
