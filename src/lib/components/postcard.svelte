@@ -117,10 +117,11 @@
 	// Step 3: Reactive variable to hold the random name
 	let placeholderName = getRandomName();
 	let placeholderEmail = getRandomEmail();
+	datetime = new Date().toDateString();
+
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
-		datetime = new Date().toDateString();
 
 		try {
 			const resp = await fetch('/api/email', {
