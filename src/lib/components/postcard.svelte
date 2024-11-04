@@ -152,133 +152,141 @@
 </script>
 
 <div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
-	<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
-		<div
-			class="front"
-			aria-label="front of postcard. click or press on any key to flip card to the back!"
-		>
-			<img src={PostcardFront} alt="postcard front " />
-			<div class="overlay-text tentang-nanti">Click me to flip me!</div>
-		</div>
-		<div
-			class="back cardback"
-			aria-label="back of postcard. fill in your information here to register."
-		>
-			<!-- <img src={Back} alt="postcard back" /> -->
-			<div class="postcard">
-				<!-- Left side: Address and message -->
-				<div class="left">
-					<img src={Stamp} class="stamp relative" alt="stamp" />
-					<div class="pad" />
-					<div class="welcome input-field tentang-nanti">See you there!</div>
-					<div class="address spectral">January 24-26, 2025</div>
-					<div class="address spectral">UCLA, CA 90024</div>
-				</div>
-				<div class="center" />
-				<!-- Right side: Sign-up form -->
-				<div class="right">
-					<img src={Updates} alt="Sign up for Updates!" class="updates" />
-					<form on:submit|preventDefault={submitHandler}>
-						{#if error === undefined && !success}
-							<div class="input-group flex-col flex">
-								<label class="input-label rubik purple" for="fullName">Full Name</label>
-								<input
-									aria-label="name"
-									type="text"
-									id="fullName"
-									bind:value={name_participant}
-									class="input-field spectral italic w-full"
-									placeholder={placeholderName}
-									required
-								/>
-							</div>
+	{#if false}
+		<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
+			<div
+				class="front"
+				aria-label="front of postcard. click or press on any key to flip card to the back!"
+			>
+				<img src={PostcardFront} alt="postcard front " />
+				<div class="overlay-text tentang-nanti">Click me to flip me!</div>
+			</div>
+			<div
+				class="back cardback"
+				aria-label="back of postcard. fill in your information here to register."
+			>
+				<!-- <img src={Back} alt="postcard back" /> -->
+				<div class="postcard">
+					<!-- Left side: Address and message -->
+					<div class="left">
+						<img src={Stamp} class="stamp relative" alt="stamp" />
+						<div class="pad" />
+						<div class="welcome input-field tentang-nanti">See you there!</div>
+						<div class="address spectral">January 24-26, 2025</div>
+						<div class="address spectral">UCLA, CA 90024</div>
+					</div>
+					<div class="center" />
+					<!-- Right side: Sign-up form -->
+					<div class="right">
+						<img src={Updates} alt="Sign up for Updates!" class="updates" />
+						<form on:submit|preventDefault={submitHandler}>
+							{#if error === undefined && !success}
+								<div class="input-group flex-col flex">
+									<label class="input-label rubik purple" for="fullName">Full Name</label>
+									<input
+										aria-label="name"
+										type="text"
+										id="fullName"
+										bind:value={name_participant}
+										class="input-field spectral italic w-full"
+										placeholder={placeholderName}
+										required
+									/>
+								</div>
 
-							<div class="input-group flex-col flex">
-								<label class="input-label rubik purple" for="university"
-									>College or University</label
-								>
-								<input
-									aria-label="university"
-									type="text"
-									id="university"
-									bind:value={school}
-									class="input-field spectral italic w-full"
-									placeholder="Floptropica University"
-									required
-								/>
-							</div>
-
-							<div class="input-group flex flex-col">
-								<label class="input-label rubik purple" for="email">Email Address</label>
-								<input
-									aria-label="email"
-									type="email"
-									id="email"
-									bind:value={text}
-									class="input-field spectral italic w-full"
-									placeholder={placeholderEmail}
-									required
-								/>
-							</div>
-							<div class="checkbox-container">
-								<input
-									aria-label="checkbox for travel stipend"
-									type="checkbox"
-									bind:checked={isChecked}
-									id="stipend"
-									name="stipend"
-									class="checkbox-input"
-								/>
-								<label for="stipend" class="checkbox-label"
-									>I need assistance with traveling from outside of Los Angeles.</label
-								>
-							</div>
-							<div style="height: 10px" />
-							<div class="w-full flex justify-center items-center">
-								{#if !loading}
-									<button
-										aria-label="submit"
-										type="submit"
-										id="submit"
-										class="submit-btn rubik-submit"
+								<div class="input-group flex-col flex">
+									<label class="input-label rubik purple" for="university"
+										>College or University</label
 									>
-										Submit
-									</button>
-								{:else}
-									<!-- <button
+									<input
+										aria-label="university"
+										type="text"
+										id="university"
+										bind:value={school}
+										class="input-field spectral italic w-full"
+										placeholder="Floptropica University"
+										required
+									/>
+								</div>
+
+								<div class="input-group flex flex-col">
+									<label class="input-label rubik purple" for="email">Email Address</label>
+									<input
+										aria-label="email"
+										type="email"
+										id="email"
+										bind:value={text}
+										class="input-field spectral italic w-full"
+										placeholder={placeholderEmail}
+										required
+									/>
+								</div>
+								<div class="checkbox-container">
+									<input
+										aria-label="checkbox for travel stipend"
+										type="checkbox"
+										bind:checked={isChecked}
+										id="stipend"
+										name="stipend"
+										class="checkbox-input"
+									/>
+									<label for="stipend" class="checkbox-label"
+										>I need assistance with traveling from outside of Los Angeles.</label
+									>
+								</div>
+								<div style="height: 10px" />
+								<div class="w-full flex justify-center items-center">
+									{#if !loading}
+										<button
+											aria-label="submit"
+											type="submit"
+											id="submit"
+											class="submit-btn rubik-submit"
+										>
+											Submit
+										</button>
+									{:else}
+										<!-- <button
 										disabled
 										type="submit"
 										id="submit"
 										class="px-2 py-2"
 										style="background:#fbf8f2"
 									/> -->
-									<div class="lds-ripple">
-										<div></div>
-										<div></div>
-									</div>
-								{/if}
-							</div>
-						{:else if success}
-							<div>
-								<p class="text-center spectral italic text-grey text-m">
-									Thank you! Please keep an eye on your email for more info. For any other concerns,
-									please contact qwerhacks@gmail.com.
-								</p>
-							</div>
-						{:else}
-							<div>
-								<p class="text-center spectral italic text-grey text-m">
-									Error encountered. Please reload and try again. For any other concerns, please
-									contact qwerhacks@gmail.com.
-								</p>
-							</div>
-							<div class="max-h-[7ch] overflow-scroll">Error: {error}</div>
-						{/if}
-					</form>
+										<div class="lds-ripple">
+											<div></div>
+											<div></div>
+										</div>
+									{/if}
+								</div>
+							{:else if success}
+								<div>
+									<p class="text-center spectral italic text-grey text-m">
+										Thank you! Please keep an eye on your email for more info. For any other
+										concerns, please contact qwerhacks@gmail.com.
+									</p>
+								</div>
+							{:else}
+								<div>
+									<p class="text-center spectral italic text-grey text-m">
+										Error encountered. Please reload and try again. For any other concerns, please
+										contact qwerhacks@gmail.com.
+									</p>
+								</div>
+								<div class="max-h-[7ch] overflow-scroll">Error: {error}</div>
+							{/if}
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	{:else}
+		<p class="text-center spectral italic text-white text-[2.5vw]">
+			Our server is currently experiencing difficulties. We seek your understanding and patience as
+			we fix the issues. Kindly visit our page again later. We apologize for any inconvenience
+			caused.
+		</p>
+	{/if}
 </div>
 
 <style>
@@ -622,7 +630,7 @@
 		text-align: left;
 		font-family: 'Spectral', serif;
 		font-weight: 400;
-		color: #9ca3a3;
+		/* color: #9ca3a3; */
 	}
 	.spectral.welcome,
 	.spectral.address {
