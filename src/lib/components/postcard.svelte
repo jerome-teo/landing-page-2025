@@ -152,7 +152,7 @@
 </script>
 
 <div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
-	{#if false}
+	{#if true}
 		<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
 			<div
 				class="front"
