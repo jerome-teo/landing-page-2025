@@ -6,6 +6,7 @@
 	import QWER from '$lib/media/qwerhacks_LA.svg';
 	import PostcardFront from '$lib/media/postcard_front.svg';
 	import Back from '$lib/media/postcard back.svg';
+
 	let isFlipped = false;
 	let isLoaded = false;
 	// Function to toggle the flip state
@@ -44,6 +45,7 @@
 	let success: boolean = false;
 
 	let loading: boolean = false;
+	let datetime: string = '';
 
 	const names = [
 		'Chappell Roan',
@@ -70,7 +72,8 @@
 		'Jack Twist',
 		'Gus Fring',
 		'Denise Cloyd',
-		'Tara Chambler'
+		'Tara Chambler',
+		'Annalise Keating'
 	];
 	const fictionalEmails = [
 		'chappell@roan.com',
@@ -117,6 +120,7 @@
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
+		datetime = new Date().toDateString();
 
 		try {
 			const resp = await fetch('/api/email', {
@@ -125,7 +129,8 @@
 					name: name_participant,
 					college: school,
 					userId: text,
-					needsTravelStipend: isChecked
+					needsTravelStipend: isChecked,
+					date: datetime
 				}),
 				headers: {
 					'content-type': 'application/json'
