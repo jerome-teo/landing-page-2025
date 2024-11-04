@@ -2,9 +2,11 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestEvent } from "./$types";
 import { SCRIPTS_API } from '$env/static/private';
 
-export async function POST({request}: RequestEvent): Promise<Response> {
+export async function POST({ request }: RequestEvent): Promise<Response> {
   console.log("Processing POST request");
   const { userId, name, college, needsTravelStipend } = await request.json();
+  let date = new Date();
+  let datetime = date.toDateString() + ", " + date.toLocaleTimeString();
   try {
     const url = SCRIPTS_API + "?" + new URLSearchParams({
       endpoint: "upsertOneStatus"
@@ -20,7 +22,8 @@ export async function POST({request}: RequestEvent): Promise<Response> {
           userId,
           name,
           college,
-          needsTravelStipend
+          needsTravelStipend,
+          datetime,
         })
       }
     );

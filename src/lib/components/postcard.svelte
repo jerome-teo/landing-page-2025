@@ -121,8 +121,7 @@
 	async function submitHandler(e: Event) {
 		console.log('Submitted');
 		loading = true;
-		let date = new Date();
-		datetime = date.toDateString() + date.toLocaleTimeString();
+
 		try {
 			const resp = await fetch('/api/email', {
 				method: 'POST',
@@ -130,8 +129,7 @@
 					name: name_participant,
 					college: school,
 					userId: text,
-					needsTravelStipend: isChecked,
-					date: datetime
+					needsTravelStipend: isChecked
 				}),
 				headers: {
 					'content-type': 'application/json'
