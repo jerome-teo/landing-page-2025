@@ -6,7 +6,7 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
   console.log("Processing POST request");
   const { userId, name, college, needsTravelStipend } = await request.json();
   let date = new Date();
-  let datetime = date.toDateString() + ", " + date.toLocaleTimeString();
+  let datetime = date.toLocaleDateString() + ", " + date.toLocaleTimeString();
   try {
     const url = SCRIPTS_API + "?" + new URLSearchParams({
       endpoint: "upsertOneStatus"
