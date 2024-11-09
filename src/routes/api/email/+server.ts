@@ -4,7 +4,7 @@ import { SCRIPTS_API } from '$env/static/private';
 
 export async function POST({ request }: RequestEvent): Promise<Response> {
   console.log("Processing POST request");
-  const { userId, name, college, needsTravelStipend } = await request.json();
+  const { userId, name, college, needsTravelStipends } = await request.json();
   let date = new Date();
   let datetime = date.toLocaleDateString() + ", " + date.toLocaleTimeString();
   try {
@@ -22,7 +22,8 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
           userId,
           name,
           college,
-          needsTravelStipend
+          needsTravelStipends,
+          datetime
         })
       }
     );
