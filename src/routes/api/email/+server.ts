@@ -22,8 +22,7 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
           userId,
           name,
           college,
-          needsTravelStipend,
-          datetime,
+          needsTravelStipend
         })
       }
     );
