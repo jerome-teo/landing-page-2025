@@ -129,7 +129,7 @@
 					name: name_participant,
 					college: school,
 					userId: text,
-					needsTravelStipend: isChecked
+					needsTravelStipends: isChecked
 				}),
 				headers: {
 					'content-type': 'application/json'
