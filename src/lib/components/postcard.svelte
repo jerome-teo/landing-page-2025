@@ -176,7 +176,7 @@
 						<img src={Stamp} class="stamp relative" alt="stamp" />
 						<div class="pad" />
 						<div class="welcome input-field tentang-nanti">See you there!</div>
-						<div class="address spectral">January 24-26, 2025</div>
+						<div class="address spectral">February 1-2, 2025</div>
 						<div class="address spectral">UCLA, CA 90024</div>
 					</div>
 					<div class="center" />
