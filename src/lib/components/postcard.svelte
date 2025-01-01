@@ -156,10 +156,10 @@
 		*/
 	}
 
-	// Apply now 
+	// Apply now
 	function openApplicationForm() {
-        window.open("https://tinyurl.com/qwerhacks25", "_blank");
-    }
+		window.open('https://tinyurl.com/qwerhacks25', '_blank');
+	}
 </script>
 
 <div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
@@ -189,7 +189,12 @@
 					<div class="center" />
 					<!-- Right side: Sign-up form -->
 					<div class="right">
-						<img src={Updates} alt="Sign up for Updates!" class="updates" style="visibility: hidden;"/>
+						<img
+							src={Updates}
+							alt="Sign up for Updates!"
+							class="updates"
+							style="visibility: hidden;"
+						/>
 						<form on:submit|preventDefault={submitHandler}>
 							{#if error === undefined && !success}
 								<!--
@@ -252,8 +257,9 @@
 								</div>
 								-->
 								<div style="height: 10px" />
-								<div class="w-full flex justify-center items-center">
+								<div class="w-full flex-col flex justify-center items-center">
 									{#if !loading}
+										<label class="input-label rubik purple" for="fullName">Application Form</label>
 										<button
 											aria-label="submit"
 											id="submit"
@@ -437,7 +443,7 @@
 			font-size: 12px;
 		}
 		.rubik {
-			font-size: 13px;
+			font-size: 11px;
 		}
 		.checkbox-label {
 			font-size: 10px;
@@ -453,7 +459,7 @@
 			font-size: 27px;
 		}
 		.rubik-submit {
-			font-size: 14px;
+			font-size: 12px;
 		}
 		.rubik {
 			font-size: 15px;
