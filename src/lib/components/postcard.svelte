@@ -165,12 +165,6 @@
 <div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
 	{#if true}
 		<div class="card {isLoaded ? 'slide-in' : 'slide-out'} {isFlipped ? 'flipped' : ''}">
-			<div class="flex items-center justify-center">
-				<p class="text-2xl text-yellow-400 font-extrabold">Applications for QWERHacks 2025 are out!</p>
-			</div>
-			<div class="flex items-center justify-center">
-				<a class="text-2xl text-white font-extrabold" href=https://tinyurl.com/qwerhacks25>Link to Apply Here!!</a>
-			</div>
 			<div
 				class="front"
 				aria-label="front of postcard. click or press on any key to flip card to the back!"
