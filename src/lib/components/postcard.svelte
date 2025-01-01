@@ -119,6 +119,7 @@
 	let placeholderEmail = getRandomEmail();
 
 	async function submitHandler(e: Event) {
+		/*
 		console.log('Submitted');
 		loading = true;
 
@@ -152,7 +153,13 @@
 			loading = false;
 		}
 		console.error(error);
+		*/
 	}
+
+	// Apply now 
+	function openApplicationForm() {
+        window.open("https://tinyurl.com/qwerhacks25", "_blank");
+    }
 </script>
 
 <div class="container sm: -mt-96" on:click={toggleFlip} on:keydown={toggleFlip}>
@@ -169,7 +176,7 @@
 				aria-label="front of postcard. click or press on any key to flip card to the back!"
 			>
 				<img src={PostcardFront} alt="postcard front " />
-				<div class="overlay-text tentang-nanti">Click me to flip me!</div>
+				<div class="overlay-text tentang-nanti">Applications out now! Click me!</div>
 			</div>
 			<div
 				class="back cardback"
@@ -188,9 +195,10 @@
 					<div class="center" />
 					<!-- Right side: Sign-up form -->
 					<div class="right">
-						<img src={Updates} alt="Sign up for Updates!" class="updates" />
+						<img src={Updates} alt="Sign up for Updates!" class="updates" style="visibility: hidden;"/>
 						<form on:submit|preventDefault={submitHandler}>
 							{#if error === undefined && !success}
+								<!--
 								<div class="input-group flex-col flex">
 									<label class="input-label rubik purple">Application Form</label>
 									<a class="spectral italic w-full" href=https://tinyurl.com/qwerhacks25>Apply at this link!</a>
@@ -248,16 +256,18 @@
 										>I need assistance with traveling from outside of Los Angeles.</label
 									>
 								</div>
+								-->
 								<div style="height: 10px" />
 								<div class="w-full flex justify-center items-center">
 									{#if !loading}
 										<button
 											aria-label="submit"
-											type="submit"
 											id="submit"
 											class="submit-btn rubik-submit"
+											style="margin-top: 20%;"
+											on:click={openApplicationForm}
 										>
-											Submit
+											Apply to QWER Hacks!
 										</button>
 									{:else}
 										<!-- <button
@@ -338,7 +348,7 @@
 			margin-top: -50%;
 		}
 		.overlay-text {
-			font-size: 15px;
+			font-size: 12px;
 		}
 		.rubik {
 			font-size: 7px;
@@ -363,7 +373,7 @@
 			width: 80%;
 		}
 		.overlay-text {
-			font-size: 20px;
+			font-size: 17px;
 		}
 		.rubik {
 			font-size: 8px;
@@ -388,7 +398,7 @@
 			width: 70%;
 		}
 		.overlay-text {
-			font-size: 25px;
+			font-size: 22px;
 		}
 		.rubik {
 			font-size: 8px;
@@ -409,7 +419,7 @@
 			width: 68%; /* Narrower width */
 		}
 		.overlay-text {
-			font-size: 29px;
+			font-size: 26px;
 		}
 		.rubik {
 			font-size: 10px;
@@ -427,7 +437,7 @@
 			width: 60%; /* Narrower width */
 		}
 		.overlay-text {
-			font-size: 29px;
+			font-size: 26px;
 		}
 		.rubik-submit {
 			font-size: 12px;
@@ -446,7 +456,7 @@
 			width: 45%; /* Narrow width for big screens */
 		}
 		.overlay-text {
-			font-size: 30px;
+			font-size: 27px;
 		}
 		.rubik-submit {
 			font-size: 14px;
@@ -464,7 +474,7 @@
 			width: 45%; /* Narrow width for big screens */
 		}
 		.overlay-text {
-			font-size: 30px;
+			font-size: 27px;
 		}
 		.rubik-submit {
 			font-size: 14px;
@@ -482,7 +492,7 @@
 			width: 45%; /* Narrow width for big screens */
 		}
 		.overlay-text {
-			font-size: 30px;
+			font-size: 27px;
 		}
 		.rubik-submit {
 			margin-top: 10px;
@@ -501,7 +511,7 @@
 			width: 45%; /* Narrow width for big screens */
 		}
 		.overlay-text {
-			font-size: 30px;
+			font-size: 27px;
 		}
 		.rubik-submit {
 			margin-top: 20px;
@@ -724,6 +734,7 @@
 		display: flex;
 		justify-content: space-between;
 		background-color: #f5ffff;
+		height: 95%;
 	}
 
 	@font-face {
