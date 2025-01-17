@@ -6,6 +6,7 @@
 	import QWER from '$lib/media/qwerhacks_LA.svg';
 	import PostcardFront from '$lib/media/postcard_front.svg';
 	import Back from '$lib/media/postcard back.svg';
+	import Standout from '$lib/media/stand-out-stickers-logo.png';
 
 	let isFlipped = false;
 	let isLoaded = false;
@@ -269,6 +270,8 @@
 										>
 											Apply to QWER Hacks!
 										</button>
+										<label class="input-label rubik purple" for="fullName">Sponsors</label>
+										<img src={Standout} alt="standout logo " />
 									{:else}
 										<!-- <button
 										disabled
