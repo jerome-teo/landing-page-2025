@@ -190,12 +190,12 @@
 					<div class="center" />
 					<!-- Right side: Sign-up form -->
 					<div class="right">
-						<img
+						<!-- <img
 							src={Updates}
 							alt="Sign up for Updates!"
 							class="updates"
 							style="visibility: hidden;"
-						/>
+						/> -->
 						<form on:submit|preventDefault={submitHandler}>
 							{#if error === undefined && !success}
 								<!--
@@ -260,7 +260,7 @@
 								<div style="height: 10px" />
 								<div class="w-full flex-col flex justify-center items-center">
 									{#if !loading}
-										<label class="input-label rubik purple" for="fullName">Application Form</label>
+										<!-- <label class="input-label rubik purple" for="fullName">Application Form</label> -->
 										<button
 											aria-label="submit"
 											id="submit"
@@ -270,8 +270,16 @@
 										>
 											Apply to QWER Hacks!
 										</button>
-										<label class="input-label rubik purple" for="fullName">Sponsors</label>
-										<img src={Standout} alt="standout logo " />
+										<label
+											class="input-label rubik purple"
+											for="fullName"
+											style=" padding-top: 20px;">Sponsors</label
+										>
+										<img
+											src={Standout}
+											alt="standout logo "
+											style="max-width: 70%; height: auto; display: block;"
+										/>
 									{:else}
 										<!-- <button
 										disabled
