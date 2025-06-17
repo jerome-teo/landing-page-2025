@@ -7,6 +7,10 @@
 	import PostcardFront from '$lib/media/postcard_front.svg';
 	import Back from '$lib/media/postcard back.svg';
 	import Standout from '$lib/media/stand-out-stickers-logo.png';
+	import SearchableDropdown from './SearchableDropdown.svelte';
+	import schoolsCsv from '$lib/media/schools.csv?raw';
+	import countriesCsv from '$lib/media/slim-2.csv?raw';
+	// import { SCRIPTS_API } from '$env/static/private';
 
 	let isFlipped = false;
 	let isLoaded = false;
@@ -47,6 +51,41 @@
 
 	let loading: boolean = false;
 	let datetime: string = '';
+
+	// New form fields
+	let firstName: string = '';
+	let lastName: string = '';
+	let age: string = '';
+	let phoneNumber: string = '';
+	let levelOfStudy: string = '';
+	let countryOfResidence: string = '';
+	let linkedinUrl: string = '';
+
+	// Age options
+	const ageOptions = Array.from({ length: 83 }, (_, i) => (i + 18).toString()); // Ages 13-95
+
+	// Level of Study options
+	const studyLevels = [
+		'Less than Secondary / High School',
+		'Secondary / High School',
+		'Undergraduate University (2 year - community college or similar)',
+		'Undergraduate University (3+ year)',
+		'Graduate University (Masters, Professional, Doctoral, etc)',
+		'Code School / Bootcamp',
+		'Other Vocational / Trade Program or Apprenticeship',
+		'Post Doctorate',
+		'Other',
+		"I'm not currently a student",
+		'Prefer not to answer'
+	];
+
+	// Countries list (abbreviated for example - you should use the full ISO 3166 list)
+	// const countries = [
+	// 	'United States',
+	// 	'Canada',
+	// 	'Mexico'
+	// 	// Add more countries here
+	// ];
 
 	const names = [
 		'Chappell Roan',
@@ -119,44 +158,117 @@
 	let placeholderName = getRandomName();
 	let placeholderEmail = getRandomEmail();
 
+	let schools: string[] = [];
+	let countries: string[] = [];
+
+	onMount(() => {
+		try {
+			// Parse schools CSV
+			schools = schoolsCsv
+				.split('\n')
+				.slice(1) // Skip header row
+				.map((line) => line.split(',')[0].trim()) // Get first column and trim
+				.filter((school) => school); // Remove empty lines
+
+			// Parse countries CSV
+			countries = countriesCsv
+				.split('\n')
+				.slice(1) // Skip header row
+				.map((line) => line.split(',')[0].trim()) // Get country name
+				.filter((country) => country); // Remove empty lines
+		} catch (error) {
+			console.error('Error loading data:', error);
+			schools = [];
+			countries = [];
+		}
+	});
+
+	// async function submitHandler(e: Event) {
+	// 	loading = true;
+	// 	try {
+	// 		console.log('Raw body text:');
+	// 		// console.log(SCRIPTS_API);
+	// 		const resp = await fetch('/api/email', {
+	// 			method: 'POST',
+	// 			body: JSON.stringify({
+	// 				name: 'HUI',
+	// 				college: 'COCK',
+	// 				userId: 'shao@a.so',
+	// 				needsTravelStipends: isChecked
+	// 			}),
+	// 			headers: {
+	// 				'content-type': 'application/json'
+	// 			}
+	// 		});
+	// 		console.log('🔽 Response received:', resp.status);
+
+	// 		if (resp.ok) {
+	// 			success = true;
+	// 			loading = false;
+	// 		} else {
+	// 			error = await resp.text();
+	// 			success = false;
+	// 			loading = false;
+	// 		}
+	// 	} catch (err) {
+	// 		console.log('Errorddddddddddddd:');
+	// 		console.error(err);
+	// 		let message = 'Unknown Error';
+	// 		if (err instanceof Error) message = err.message;
+	// 		error = message;
+	// 		success = false;
+	// 		loading = false;
+	// 	}
+	// }
+
 	async function submitHandler(e: Event) {
-		/*
-		console.log('Submitted');
 		loading = true;
+		error = undefined;
+		success = false;
+
+		const payload = {
+			name: 'HUI',
+			college: 'COCK',
+			userId: 'shafjo@adddd.so',
+			needsTravelStipends: false
+		};
+
+		console.log('📦 Sending to API:', payload);
+		console.log('📦 Sending payload:', JSON.stringify(payload));
 
 		try {
 			const resp = await fetch('/api/email', {
 				method: 'POST',
-				body: JSON.stringify({
-					name: name_participant,
-					college: school,
-					userId: text,
-					needsTravelStipends: isChecked
-				}),
 				headers: {
-					'content-type': 'application/json'
-				}
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(payload)
 			});
+			console.log('🔄 server said:', await resp.clone().json());
+
+			const contentType = resp.headers.get('Content-Type');
+
+			let serverResponse: any;
+			if (contentType && contentType.includes('application/json')) {
+				serverResponse = await resp.json();
+			} else {
+				serverResponse = { error: await resp.clone().text() };
+			}
+
+			console.log('📬 Response from server:', serverResponse);
 
 			if (resp.ok) {
 				success = true;
-				loading = false;
 			} else {
-				error = await resp.text();
-				success = false;
-				loading = false;
+				error = serverResponse.error || 'Unknown error';
 			}
 		} catch (err) {
-			let message = 'Unknown Error';
-			if (err instanceof Error) message = err.message;
-			error = message;
-			success = false;
+			console.error('💥 Network or parsing error:', err);
+			error = err instanceof Error ? err.message : 'Unknown error';
+		} finally {
 			loading = false;
 		}
-		console.error(error);
-		*/
 	}
-
 	// Apply now
 	function openApplicationForm() {
 		window.open('https://tinyurl.com/qwerhacks25', '_blank');
@@ -198,40 +310,63 @@
 						/> -->
 						<form on:submit|preventDefault={submitHandler}>
 							{#if error === undefined && !success}
-								<!--
 								<div class="input-group flex-col flex">
 									<label class="input-label rubik purple">Application Form</label>
-									<a class="spectral italic w-full" href=https://tinyurl.com/qwerhacks25>Apply at this link!</a>
+									<!-- <a class="spectral italic w-full" href="https://tinyurl.com/qwerhacks25"
+										>Apply at this link!</a
+									> -->
 								</div>
 								<div class="input-group flex-col flex">
-									<label class="input-label rubik purple" for="fullName">Full Name</label>
+									<label class="input-label rubik purple" for="firstName">First Name</label>
 									<input
-										aria-label="name"
+										aria-label="first name"
 										type="text"
-										id="fullName"
-										bind:value={name_participant}
+										id="firstName"
+										bind:value={firstName}
 										class="input-field spectral italic w-full"
-										placeholder={placeholderName}
+										placeholder="First Name"
 										required
 									/>
 								</div>
 
 								<div class="input-group flex-col flex">
-									<label class="input-label rubik purple" for="university"
-										>College or University</label
-									>
+									<label class="input-label rubik purple" for="lastName">Last Name</label>
 									<input
-										aria-label="university"
+										aria-label="last name"
 										type="text"
-										id="university"
-										bind:value={school}
+										id="lastName"
+										bind:value={lastName}
 										class="input-field spectral italic w-full"
-										placeholder="Floptropica University"
+										placeholder="Last Name"
 										required
 									/>
 								</div>
 
-								<div class="input-group flex flex-col">
+								<div class="input-group flex-col flex">
+									<SearchableDropdown
+										options={ageOptions}
+										bind:value={age}
+										placeholder="Select Age"
+										required={true}
+										id="age"
+										label="Age"
+									/>
+								</div>
+
+								<div class="input-group flex-col flex">
+									<label class="input-label rubik purple" for="phoneNumber">Phone Number</label>
+									<input
+										aria-label="phone number"
+										type="tel"
+										id="phoneNumber"
+										bind:value={phoneNumber}
+										class="input-field spectral italic w-full"
+										placeholder="(123) 456-7890"
+										required
+									/>
+								</div>
+
+								<div class="input-group flex-col flex">
 									<label class="input-label rubik purple" for="email">Email Address</label>
 									<input
 										aria-label="email"
@@ -243,7 +378,54 @@
 										required
 									/>
 								</div>
-								<div class="checkbox-container">
+
+								<div class="input-group flex-col flex">
+									<SearchableDropdown
+										options={schools}
+										bind:value={school}
+										placeholder="Select your school"
+										required={true}
+										id="school"
+										label="School"
+									/>
+								</div>
+
+								<div class="input-group flex-col flex">
+									<SearchableDropdown
+										options={studyLevels}
+										bind:value={levelOfStudy}
+										placeholder="Select Level of Study"
+										required={true}
+										id="levelOfStudy"
+										label="Level of Study"
+									/>
+								</div>
+
+								<div class="input-group flex-col flex">
+									<SearchableDropdown
+										options={countries}
+										bind:value={countryOfResidence}
+										placeholder="Select your country"
+										required={true}
+										id="countryOfResidence"
+										label="Country of Residence"
+									/>
+								</div>
+
+								<div class="input-group flex-col flex">
+									<label class="input-label rubik purple" for="linkedinUrl">LinkedIn URL</label>
+									<input
+										aria-label="linkedin url"
+										type="url"
+										id="linkedinUrl"
+										bind:value={linkedinUrl}
+										class="input-field spectral italic w-full"
+										placeholder="https://linkedin.com/in/yourprofile"
+										required
+									/>
+								</div>
+
+								<!-- <div class="checkbox-container">
 									<input
 										aria-label="checkbox for travel stipend"
 										type="checkbox"
@@ -255,9 +437,9 @@
 									<label for="stipend" class="checkbox-label"
 										>I need assistance with traveling from outside of Los Angeles.</label
 									>
-								</div>
-								-->
-								<div style="height: 10px" />
+								</div> -->
+
+								<!-- <div style="height: 10px" /> -->
 								<div class="w-full flex-col flex justify-center items-center">
 									{#if !loading}
 										<!-- <label class="input-label rubik purple" for="fullName">Application Form</label> -->
@@ -266,11 +448,10 @@
 											id="submit"
 											class="submit-btn rubik-submit"
 											style="margin-top: 20%;"
-											on:click={openApplicationForm}
 										>
-											Apply to QWER Hacks!
+											Submit
 										</button>
-										<label
+										<!-- <label
 											class="input-label rubik purple"
 											for="fullName"
 											style=" padding-top: 20px;">Sponsors</label
@@ -279,15 +460,15 @@
 											src={Standout}
 											alt="standout logo "
 											style="max-width: 70%; height: auto; display: block;"
-										/>
+										/> -->
 									{:else}
-										<!-- <button
-										disabled
-										type="submit"
-										id="submit"
-										class="px-2 py-2"
-										style="background:#fbf8f2"
-									/> -->
+										<button
+											disabled
+											type="submit"
+											id="submit"
+											class="px-2 py-2"
+											style="background:#fbf8f2"
+										/>
 										<div class="lds-ripple">
 											<div></div>
 											<div></div>
@@ -690,8 +871,47 @@
 	}
 	.right {
 		width: 62.5%;
-		height: 70%; /* Ensure both the left and right sides take up equal space */
+		height: 100%; /* Ensure both the left and right sides take up equal space */
+		overflow-y: auto; /* Enable vertical scrolling */
+		max-height: 100%; /* Ensure it doesn't exceed the container height */
+		padding-right: 10px; /* Add some padding for the scrollbar */
 	}
+
+	/* Add custom scrollbar styling */
+	.right::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.right::-webkit-scrollbar-track {
+		background: #f5ffff;
+		border-radius: 3px;
+	}
+
+	.right::-webkit-scrollbar-thumb {
+		background: #474580;
+		border-radius: 3px;
+	}
+
+	.right::-webkit-scrollbar-thumb:hover {
+		background: #2e008b;
+	}
+
+	/* Ensure form takes full width */
+	.right form {
+		width: 100%;
+	}
+
+	/* Add some spacing between form elements */
+	.input-group {
+		margin-bottom: 15px;
+	}
+
+	/* Adjust the submit button container to stay at bottom */
+	.right .w-full.flex-col.flex.justify-center.items-center {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
 	input,
 	button {
 		background-color: #f5ffff;
