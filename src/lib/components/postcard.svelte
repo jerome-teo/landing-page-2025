@@ -183,54 +183,21 @@
 		}
 	});
 
-	// async function submitHandler(e: Event) {
-	// 	loading = true;
-	// 	try {
-	// 		console.log('Raw body text:');
-	// 		// console.log(SCRIPTS_API);
-	// 		const resp = await fetch('/api/email', {
-	// 			method: 'POST',
-	// 			body: JSON.stringify({
-	// 				name: 'HUI',
-	// 				college: 'COCK',
-	// 				userId: 'shao@a.so',
-	// 				needsTravelStipends: isChecked
-	// 			}),
-	// 			headers: {
-	// 				'content-type': 'application/json'
-	// 			}
-	// 		});
-	// 		console.log('🔽 Response received:', resp.status);
-
-	// 		if (resp.ok) {
-	// 			success = true;
-	// 			loading = false;
-	// 		} else {
-	// 			error = await resp.text();
-	// 			success = false;
-	// 			loading = false;
-	// 		}
-	// 	} catch (err) {
-	// 		console.log('Errorddddddddddddd:');
-	// 		console.error(err);
-	// 		let message = 'Unknown Error';
-	// 		if (err instanceof Error) message = err.message;
-	// 		error = message;
-	// 		success = false;
-	// 		loading = false;
-	// 	}
-	// }
-
 	async function submitHandler(e: Event) {
 		loading = true;
 		error = undefined;
 		success = false;
 
 		const payload = {
-			name: 'HUI',
-			college: 'COCK',
-			userId: 'shafjo@adddd.so',
-			needsTravelStipends: false
+			firstName: firstName,
+			lastName: lastName,
+			age: age,
+			phoneNumber: phoneNumber,
+			college: school,
+			userId: text,
+			levelOfStudy: levelOfStudy,
+			countryOfResidence: countryOfResidence,
+			linkedinUrl: linkedinUrl
 		};
 
 		console.log('📦 Sending to API:', payload);
@@ -295,9 +262,9 @@
 					<div class="left">
 						<img src={Stamp} class="stamp relative" alt="stamp" />
 						<div class="pad" />
-						<div class="welcome input-field tentang-nanti">See you there!</div>
-						<div class="address spectral">February 1-2, 2025</div>
-						<div class="address spectral">UCLA, CA 90024</div>
+						<div class="welcome input-field tentang-nanti">RSVP here for more updates!</div>
+						<div class="address spectral">Date: TBD</div>
+						<div class="address spectral">Addr: UCLA, CA 90024</div>
 					</div>
 					<div class="center" />
 					<!-- Right side: Sign-up form -->
@@ -311,7 +278,7 @@
 						<form on:submit|preventDefault={submitHandler}>
 							{#if error === undefined && !success}
 								<div class="input-group flex-col flex">
-									<label class="input-label rubik purple">Application Form</label>
+									<label class="input-label rubik purple">RSVP Form</label>
 									<!-- <a class="spectral italic w-full" href="https://tinyurl.com/qwerhacks25"
 										>Apply at this link!</a
 									> -->
@@ -470,8 +437,8 @@
 											style="background:#fbf8f2"
 										/>
 										<div class="lds-ripple">
-											<div></div>
-											<div></div>
+											<div />
+											<div />
 										</div>
 									{/if}
 								</div>
@@ -786,9 +753,7 @@
 		height: 100%;
 		width: 100%;
 		position: relative;
-		transition:
-			transform 1500ms ease,
-			top 500ms ease;
+		transition: transform 1500ms ease, top 500ms ease;
 		transform-style: preserve-3d;
 		top: 100vh;
 	}
@@ -1014,9 +979,7 @@
 		border-radius: 4px;
 		position: relative;
 		cursor: pointer;
-		transition:
-			background-color 0.2s ease,
-			border-color 0.2s ease;
+		transition: background-color 0.2s ease, border-color 0.2s ease;
 	}
 
 	.checkbox-input:checked {
