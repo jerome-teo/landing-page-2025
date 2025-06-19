@@ -13,7 +13,12 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
     userId,
     levelOfStudy,
     countryOfResidence,
-    linkedinUrl } = await request.json();
+    linkedinUrl,
+    mlhCodeOfConduct,
+    mlhEventLogistics,
+    mlhCommunication
+
+  } = await request.json();
   let date = new Date();
   let datetime = date.toLocaleDateString() + ", " + date.toLocaleTimeString();
   try {
@@ -37,6 +42,9 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
           "levelOfStudy": levelOfStudy,
           "country": countryOfResidence,
           "linkedInUrl": linkedinUrl,
+          "mlhCodeOfConduct": mlhCodeOfConduct,
+          "mlhEventLogistics": mlhEventLogistics,
+          "mlhCommunication": mlhCommunication
         })
       }
     );

@@ -43,7 +43,10 @@
 	let school: string = '';
 	let text: string = '';
 
-	let isChecked: boolean = false;
+	// MLH Agreement variables
+	let mlhCodeOfConduct: boolean = false;
+	let mlhEventLogistics: boolean = false;
+	let mlhCommunication: boolean = false;
 
 	let error: string | undefined = undefined;
 
@@ -188,6 +191,19 @@
 		error = undefined;
 		success = false;
 
+		// Validate required MLH agreements
+		if (!mlhCodeOfConduct) {
+			error = 'You must agree to the MLH Code of Conduct to continue.';
+			loading = false;
+			return;
+		}
+
+		if (!mlhEventLogistics) {
+			error = 'You must agree to the Event Logistics Information to continue.';
+			loading = false;
+			return;
+		}
+
 		const payload = {
 			firstName: firstName,
 			lastName: lastName,
@@ -197,7 +213,10 @@
 			userId: text,
 			levelOfStudy: levelOfStudy,
 			countryOfResidence: countryOfResidence,
-			linkedinUrl: linkedinUrl
+			linkedinUrl: linkedinUrl,
+			mlhCodeOfConduct: mlhCodeOfConduct,
+			mlhEventLogistics: mlhEventLogistics,
+			mlhCommunication: mlhCommunication
 		};
 
 		console.log('📦 Sending to API:', payload);
@@ -392,19 +411,72 @@
 									/>
 								</div>
 
-								<!-- <div class="checkbox-container">
+								<div class="checkbox-container">
 									<input
-										aria-label="checkbox for travel stipend"
+										aria-label="MLH Code of Conduct agreement"
 										type="checkbox"
-										bind:checked={isChecked}
-										id="stipend"
-										name="stipend"
+										bind:checked={mlhCodeOfConduct}
+										id="mlhCodeOfConduct"
+										name="mlhCodeOfConduct"
+										class="checkbox-input"
+										required
+									/>
+									<label for="mlhCodeOfConduct" class="checkbox-label">
+										<span class="required-text">[REQUIRED]</span> I have read and agree to the
+										<a
+											href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+											target="_blank"
+											rel="noopener noreferrer"
+											class="link-text">MLH Code of Conduct</a
+										>.
+									</label>
+								</div>
+
+								<div class="checkbox-container">
+									<input
+										aria-label="MLH Event Logistics Information agreement"
+										type="checkbox"
+										bind:checked={mlhEventLogistics}
+										id="mlhEventLogistics"
+										name="mlhEventLogistics"
+										class="checkbox-input"
+										required
+									/>
+									<label for="mlhEventLogistics" class="checkbox-label">
+										<span class="required-text">[REQUIRED]</span>I authorize you to share my
+										application/registration information with Major League Hacking for event
+										administration, ranking, and MLH administration in-line with the MLH Privacy
+										Policy. I further agree to the terms of both the
+										<a
+											href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
+											target="_blank"
+											rel="noopener noreferrer"
+											class="link-text">MLH Contest Terms and Conditions</a
+										>
+										and the
+										<a
+											href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
+											target="_blank"
+											rel="noopener noreferrer"
+											class="link-text">MLH Privacy Policy</a
+										>.
+									</label>
+								</div>
+
+								<div class="checkbox-container">
+									<input
+										aria-label="MLH Communication agreement"
+										type="checkbox"
+										bind:checked={mlhCommunication}
+										id="mlhCommunication"
+										name="mlhCommunication"
 										class="checkbox-input"
 									/>
-									<label for="stipend" class="checkbox-label"
-										>I need assistance with traveling from outside of Los Angeles.</label
-									>
-								</div> -->
+									<label for="mlhCommunication" class="checkbox-label">
+										I authorize MLH to send me occasional emails about relevant events, career
+										opportunities, and community announcements.
+									</label>
+								</div>
 
 								<!-- <div style="height: 10px" /> -->
 								<div class="w-full flex-col flex justify-center items-center">
@@ -1011,6 +1083,29 @@
 
 	.checkbox-input:hover {
 		border-color: #2e008b; /* Darker shade on hover */
+	}
+
+	/* MLH Agreement styling */
+	.required-text {
+		color: #d32f2f; /* Red color for required */
+		font-weight: bold;
+		font-size: 0.9em;
+	}
+
+	.optional-text {
+		color: #1976d2; /* Blue color for optional */
+		font-weight: bold;
+		font-size: 0.9em;
+	}
+
+	.link-text {
+		color: #3d00b7; /* Purple color for links */
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.link-text:hover {
+		color: #2a0082; /* Darker purple on hover */
 	}
 
 	/* loading spinner */
