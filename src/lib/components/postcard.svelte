@@ -443,7 +443,7 @@
 										required
 									/>
 									<label for="mlhEventLogistics" class="checkbox-label">
-										<span class="required-text">[REQUIRED]</span>I authorize you to share my
+										<span class="required-text">[REQUIRED]</span> I authorize you to share my
 										application/registration information with Major League Hacking for event
 										administration, ranking, and MLH administration in-line with the MLH Privacy
 										Policy. I further agree to the terms of both the
