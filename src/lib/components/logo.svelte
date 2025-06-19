@@ -8,7 +8,9 @@
 	<div id="image" class="w-full logo">
 		<!-- Added left padding here -->
 		<!-- Logo image -->
-		<img src={Logo} alt="QWERHACKS Logo" class=" absolute" />
+		<a href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md">
+			<img src={Logo} alt="QWERHACKS Logo" class=" absolute" />
+		</a>
 	</div>
 </div>
 
