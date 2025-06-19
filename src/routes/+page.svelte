@@ -9,11 +9,11 @@
 	<a
 		id="mlh-trust-badge"
 		style="display:block;max-width:100px;min-width:60px;position:fixed;right:5%;top:0;width:10%;z-index:10000"
-		href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=yellow"
+		href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=gray"
 		target="_blank"
 		><img
-			src="https://images.squarespace-cdn.com/content/v1/65b741a25c094207b27f1ddb/2ddcbe17-62cb-4bd0-8573-cf1b6c0b1d35/image-removebg-preview+%282%29.png"
-			alt="Major League Hacking 2024 Hackathon Season"
+			src="https://s3.amazonaws.com/logged-assets/trust-badge/2026/mlh-trust-badge-2026-gray.svg"
+			alt="Major League Hacking 2026 Hackathon Season"
 			style="width:100%"
 		/></a
 	>

@@ -262,8 +262,8 @@
 					<div class="left">
 						<img src={Stamp} class="stamp relative" alt="stamp" />
 						<div class="pad" />
-						<div class="welcome input-field tentang-nanti">RSVP here for more updates!</div>
-						<div class="address spectral">Date: TBD</div>
+						<div class="welcome input-field tentang-nanti">Register here for more updates!</div>
+						<div class="address spectral">Date: Jan 2026</div>
 						<div class="address spectral">Addr: UCLA, CA 90024</div>
 					</div>
 					<div class="center" />
