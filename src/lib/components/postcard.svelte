@@ -542,6 +542,18 @@
 			caused.
 		</p>
 	{/if}
+	<footer class="footer">
+		Read the
+		<a
+			href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="footer-link"
+		>
+			MLH Code of Conduct
+		</a>
+		here.
+	</footer>
 </div>
 
 <style>
@@ -1159,5 +1171,28 @@
 			height: 80px;
 			opacity: 0;
 		}
+	}
+
+	footer.footer {
+		position: fixed;
+		bottom: 1rem;
+		left: 0;
+		width: 100%;
+		/*background-color: rgba(0, 0, 0, 0.6);  semi-transparent dark */
+		color: #ffffff;
+		text-align: center;
+		padding: 0.5rem 0;
+		z-index: 999;
+		font-family: 'Spectral', serif;
+		font-size: 0.9rem;
+	}
+
+	a.footer-link {
+		color: #ffffff;
+		text-decoration: underline;
+	}
+
+	a.footer-link:hover {
+		color: #ccccff;
 	}
 </style>
